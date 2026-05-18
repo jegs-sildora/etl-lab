@@ -24,7 +24,7 @@ node etl.js
 ## Lab Documentation
 The following PDF contains the full lab requirements, tasks, and completed assessment details.
 
-<p>You can <a href="ITSAR2_LAB_1.pdf">download the PDF</a> to view it.</p>
+<p>You can <a href="src/docs/ITSAR2_LAB_1.pdf">download the PDF</a> to view it.</p>
 ---
 
 ## Lab Assessment: ITSAR2 LAB 1
@@ -82,9 +82,9 @@ The following PDF contains the full lab requirements, tasks, and completed asses
 ## Visual Evidence
 
 ### Terminal Output
-![Terminal Output](img/terminal_output.png)
+![Terminal Output](src/img/terminal_output.png)
 
 ### MS Excel Output (output.csv)
-![MS Excel Output](img/csv_output.png)
+![MS Excel Output](src/img/csv_output.png)
 
 

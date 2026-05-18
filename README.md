@@ -24,6 +24,67 @@ node etl.js
 ## Lab Documentation
 The following PDF contains the full lab requirements, tasks, and completed assessment details.
 
-<object data="ITSAR2_LAB_1.pdf" type="application/pdf" width="100%" height="800px">
-    <p>Your browser does not support embedding PDFs. You can <a href="ITSAR2_LAB_1.pdf">download the PDF</a> to view it.</p>
-</object>
+<p>You can <a href="ITSAR2_LAB_1.pdf">download the PDF</a> to view it.</p>
+---
+
+## Lab Assessment: ITSAR2 LAB 1
+
+**Course:** DATA INTEGRATION AND ETL  
+**Year & Section:** BSIT – 3B
+
+**Group Members:**
+- Curio, Josh Nathan
+- Gilera, Rowena
+- Gromea, Nehje John
+- Guanzon, Jurriel
+- Sildora, Jegrick
+
+### Task 1: Data Inspection
+1. **What fields are nested objects (not plain values)?**
+   - **Answer:** Nested fields: `address` and `company` (note: `address.geo` is nested inside `address`).
+2. **What is the value of `data[0].address.city`?**
+   - **Answer:** Value: `data[0].address.city = Gwenborough`
+
+### Task 2: Data Transformation
+1. **What does `.split(' ')[0]` do to the phone number?**
+   - **Answer:** It keeps the substring before the first space — removes extensions (e.g., `x56442`) or extra text after the main phone number.
+2. **Why do we use `parseFloat()` on `lat` and `lng`?**
+   - **Answer:** To convert latitude/longitude from strings to numeric values for arithmetic, sorting, or filtering.
+3. **The filter step removes records without '@' in the email. How many records passed the filter?**
+   - **Answer:** Records passed filter: 10
+
+### Task 3: Data Loading
+1. **How many columns does the CSV have? List them.**
+   - **Answer:** 11 columns — `id`, `name`, `username`, `email`, `phone`, `city`, `zipcode`, `lat`, `lng`, `company`, `postCount`.
+2. **What is the company name of the user with `id = 5`?**
+   - **Answer:** Company (id = 5): `Keebler LLC`
+3. **What does `fs.writeFileSync()` do? What would happen if you used `fs.appendFileSync()` instead?**
+   - **Answer:** `fs.writeFileSync()` synchronously writes the file and overwrites any existing file at that path. Using `fs.appendFileSync()` would append data to the end of the file, causing repeated runs to accumulate rows instead of replacing them.
+
+---
+
+## Challenge Summaries
+
+### Challenge A: Fetching Additional Data
+- **Implementation:** Fetched `/posts` endpoint, counted posts per `userId`, and added a `postCount` column to each user row.
+- **Result:** Each user in the JSONPlaceholder dataset has a `postCount` of 10.
+
+### Challenge B: Error Handling
+- **Implementation:** Added a `.catch()` block to `main()` that prints a friendly error message (`[ERROR] ETL pipeline failed: <message>`) and exits with a non-zero status.
+- **Behavior:** If the API is down or the URL is invalid, the `extract()` call throws an error, no CSV is written, and the failure is logged.
+
+### Challenge C: Conditional Filtering
+- **Implementation:** Added a filter after building the rows: `const southern = rows.filter(r => r.lat < 0);`.
+- **Result:** 7 users remain in the Southern Hemisphere (IDs: 1, 2, 3, 5, 6, 8, 10).
+
+---
+
+## Visual Evidence
+
+### Terminal Output
+![Terminal Output](img/terminal_output.png)
+
+### MS Excel Output (output.csv)
+![MS Excel Output](img/csv_output.png)
+
+
